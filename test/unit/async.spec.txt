@@ -1,0 +1,26 @@
+let promiseFun = () => {
+  return new Promise((res, rej) => {
+    rej('I am a rejected Promise');
+  });
+};
+
+describe('async Js ', () => {
+  test('test your promise', () => {
+    promiseFun()
+      .then((data) => {
+        expect(data).toBe('I am a Promise');
+      })
+      .catch((err) => {
+        expect(err).toBe('I am a rejected Promise');
+      });
+  });
+
+  test('test your async/await', async () => {
+      try {
+        let output = await promiseFun();
+        expect(output).toBe('I am a Promise');
+    } catch (err) {
+         expect(err).toBe('I am a rejected Promise');
+    }
+  });
+});

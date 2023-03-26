@@ -1,0 +1,41 @@
+// false,null,undefined,NaN , 0 ,""
+let Math = require('./../../myApp/math.Method');
+
+
+let totalSum = 0
+//set
+beforeEach(()=>{
+  console.log("beforeEach");
+})
+//Only execute to set
+beforeAll(()=>{
+  console.log("beforeAll")
+})
+
+//reset
+afterEach(()=>{
+  console.log('afterEach')
+})
+afterAll(()=>{
+  console.log("afterAll")
+})
+
+
+describe('calculator ', () => {
+  test('should test sum method', () => {
+    expect(Math.sum(2, 3)).toBe(5);
+    expect(Math.sum(-1, -1)).toBe(-2);
+    expect(Math.sum()).toBe('Please enter numbers');
+    expect(Math.sum('a', 'b')).toBe('Please enter numbers');
+  });
+
+  test('should test square method', () => {
+    expect(Math.square(2)).toBe(4);
+    // expect(Math.square(0)).toBe(0);
+    expect(Math.square(-5)).toBe(25);
+    expect(Math.square()).toBe('Please Enter a Number');
+    expect(Math.square(Infinity)).toBe(Infinity);
+  });
+});
+
+// console.log(sum.sum(4,2))

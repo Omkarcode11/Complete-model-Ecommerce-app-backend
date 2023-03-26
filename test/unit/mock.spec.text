@@ -1,0 +1,20 @@
+let calculateEmailSend = (n, sendEmail) => {
+  let totalEmailsSend = 0;
+  for (let i = 0; i < n; i++) {
+    let delivery = sendEmail();
+    totalEmailsSend = delivery.passed > delivery.failed
+  }
+  return totalEmailsSend;
+};
+
+describe('mock Functions', () => {
+  let delivery = {
+    passed: 2,
+    failed: 1,
+  };
+  let sendEmail = jest.fn().mockReturnValue(delivery);
+
+  test('first Mock function', () => {
+    expect(calculateEmailSend(5, sendEmail)).toBe(true);
+  });
+});
